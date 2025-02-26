@@ -1,5 +1,5 @@
 ---
-
+const pageTitle = "Learning Astro Blog";
 ---
 
 <html lang="en">
@@ -8,7 +8,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<nav>
@@ -17,11 +17,19 @@
 			<a href="/blog">Blog</a>
 		</nav>
 
-		<h1>My Astro Learning Blog</h1>
+		<h1>{pageTitle}</h1>
 
 		<p>
 			I don't like that I have so much repetition so far, where are
 			partials / layouts
 		</p>
+
+		<nav>
+			<ul>
+				<li><a href="posts/post-01">Post 01</a></li>
+				<li><a href="posts/post-02">Post 02</a></li>
+				<li><a href="posts/post-03">Post 03</a></li>
+			</ul>
+		</nav>
 	</body>
 </html>
