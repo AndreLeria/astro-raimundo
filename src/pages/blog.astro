@@ -1,4 +1,8 @@
 ---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
 const pageTitle = "Learning Astro Blog";
 ---
 
@@ -11,18 +15,9 @@ const pageTitle = "Learning Astro Blog";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<nav>
-			<a href="/">Home</a>
-			<a href="/about">About</a>
-			<a href="/blog">Blog</a>
-		</nav>
+		<Header title={pageTitle} />
 
-		<h1>{pageTitle}</h1>
-
-		<p>
-			I don't like that I have so much repetition so far, where are
-			partials / layouts
-		</p>
+		<p>Components are here, but where layout (also, are there partials?)</p>
 
 		<nav>
 			<ul>
@@ -31,5 +26,7 @@ const pageTitle = "Learning Astro Blog";
 				<li><a href="posts/post-03">Post 03</a></li>
 			</ul>
 		</nav>
+
+		<Footer />
 	</body>
 </html>
