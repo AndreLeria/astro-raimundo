@@ -1,0 +1,43 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = {
+    frontmatter: {
+        title: string;
+        pubDate: string;
+        description: string;
+        author: string;
+        image: {
+            url: string;
+            alt: string;
+        };
+        tags: string[];
+    };
+};
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+    <header>
+        <small>Published on {frontmatter.pubDate.slice(0, 10)}</small>
+        <small>Written by {frontmatter.author}</small>
+    </header>
+
+    <p>
+        <em>{frontmatter.description}</em>
+    </p>
+
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt} width="300" />
+
+    <article>
+        <slot />
+    </article>
+
+    <fieldset>
+        <legend>Tags</legend>
+        <ul>
+            {frontmatter.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+    </fieldset>
+</BaseLayout>

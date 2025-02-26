@@ -1,32 +1,21 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
 const pageTitle = "Learning Astro Blog";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<Header title={pageTitle} />
+<BaseLayout title={pageTitle}>
+	<p>
+		Components are here, layout too... are layouts just regular components?
+		Also, partials maybe?
+	</p>
 
-		<p>Components are here, but where layout (also, are there partials?)</p>
-
-		<nav>
-			<ul>
-				<li><a href="posts/post-01">Post 01</a></li>
-				<li><a href="posts/post-02">Post 02</a></li>
-				<li><a href="posts/post-03">Post 03</a></li>
-			</ul>
-		</nav>
-
-		<Footer />
-	</body>
-</html>
+	<nav>
+		<ul>
+			<li><a href="posts/post-01">Post 01</a></li>
+			<li><a href="posts/post-02">Post 02</a></li>
+			<li><a href="posts/post-03">Post 03</a></li>
+		</ul>
+	</nav>
+</BaseLayout>
