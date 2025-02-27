@@ -34,10 +34,35 @@ const { frontmatter } = Astro.props;
         <slot />
     </article>
 
-    <fieldset>
-        <legend>Tags</legend>
-        <ul>
-            {frontmatter.tags.map((tag) => <li>{tag}</li>)}
-        </ul>
-    </fieldset>
+    <nav>
+        <header>Tags:</header>
+        {
+            frontmatter.tags.map((tag) => (
+                <p>
+                    <a href={`/tags/${tag}`}>{tag}</a>
+                </p>
+            ))
+        }
+    </nav>
 </BaseLayout>
+
+<style>
+    a {
+        color: #00539f;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        & p {
+            margin: 0.25em;
+            border: dotted 1px #a1a1a1;
+            border-radius: 0.5em;
+            padding: 0.5em 1em;
+            font-size: 1.15em;
+            background-color: #f8fcfd;
+        }
+    }
+</style>

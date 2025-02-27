@@ -1,8 +1,13 @@
 ---
+import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
 const pageTitle = "Learning Astro Blog";
+
+const allPosts = Object.values(
+	import.meta.glob("./posts/*.md", { eager: true }),
+);
 ---
 
 <BaseLayout title={pageTitle}>
@@ -13,9 +18,11 @@ const pageTitle = "Learning Astro Blog";
 
 	<nav>
 		<ul>
-			<li><a href="posts/post-01">Post 01</a></li>
-			<li><a href="posts/post-02">Post 02</a></li>
-			<li><a href="posts/post-03">Post 03</a></li>
+			{
+				allPosts.map((post: any) => (
+					<BlogPost url={post.url} title={post.frontmatter.title} />
+				))
+			}
 		</ul>
 	</nav>
 </BaseLayout>
