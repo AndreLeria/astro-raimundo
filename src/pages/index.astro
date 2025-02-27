@@ -1,7 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.svelte";
 ---
 
 <BaseLayout title="Home">
 	<h2>Raimundo</h2>
+
+	<Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey There"]} />
 </BaseLayout>
