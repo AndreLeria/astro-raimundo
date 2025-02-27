@@ -1,18 +1,11 @@
 ---
+import type { getCollection } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 
 type Props = {
-    frontmatter: {
-        title: string;
-        pubDate: string;
-        description: string;
-        author: string;
-        image: {
-            url: string;
-            alt: string;
-        };
-        tags: string[];
-    };
+    frontmatter: Awaited<
+        ReturnType<typeof getCollection<"blog">>
+    >[number]["data"];
 };
 
 const { frontmatter } = Astro.props;
@@ -20,7 +13,7 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title={frontmatter.title}>
     <header>
-        <small>Published on {frontmatter.pubDate.slice(0, 10)}</small>
+        <small>Published on {frontmatter.pubDate.toLocaleDateString()}</small>
         <small>Written by {frontmatter.author}</small>
     </header>
 

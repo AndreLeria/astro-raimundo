@@ -2,18 +2,17 @@
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
-import { getAllPosts, getAllTags } from "../../components/Posts";
+import { getAllTags } from "../../components/Posts";
+import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
-    const allPosts = getAllPosts();
+    const allPosts = await getCollection("blog");
     const allTags = getAllTags(allPosts);
 
     const route = (tag: string) => ({
         params: { tag },
         props: {
-            posts: allPosts.filter((post) =>
-                post.frontmatter.tags.includes(tag),
-            ),
+            posts: allPosts.filter((post) => post.data.tags.includes(tag)),
         },
     });
 
@@ -30,7 +29,10 @@ const { posts } = Astro.props;
         <ul>
             {
                 posts.map((post) => (
-                    <BlogPost url={post.url} title={post.frontmatter.title} />
+                    <BlogPost
+                        url={`/posts/${post.id}`}
+                        title={post.data.title}
+                    />
                 ))
             }
         </ul>

@@ -1,8 +1,9 @@
 ---
-import { getAllPosts, getAllTags } from "../../components/Posts";
+import { getCollection } from "astro:content";
+import { getAllTags } from "../../components/Posts";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const allPosts = getAllPosts();
+const allPosts = await getCollection("blog");
 const allTags = getAllTags(allPosts);
 ---
 
